@@ -20,13 +20,14 @@ public class LogManager {
 	private static LogManager instance;
 	
 	/**
-	 * <p>Class constructor.</p>
+	 * <p>Class constructor. The threshold applied to new logs is set to the 
+	 * default log threshold found in the Log class.</p>
 	 */
 	private LogManager() {
 		this.logs = new HashMap<String, Log>();
 		
 		this.cachedAppenders = new ArrayList<Appender>();
-		this.cachedLevel = Level.WARN;
+		this.cachedLevel = Log.DEFAULT_LEVEL;
 	}
 	
 	/**

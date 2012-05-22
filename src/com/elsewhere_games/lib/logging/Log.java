@@ -6,6 +6,12 @@ import java.util.ArrayList;
 public class Log {
 
 	/*
+	 * Constants
+	 */
+	
+	public static final Level 		DEFAULT_LEVEL 						= Level.DEBUG;
+	
+	/*
 	 * Constructors
 	 */
 	
@@ -18,7 +24,7 @@ public class Log {
 		this.name = name;
 		
 		this.appenders = new ArrayList<Appender>();
-		this.level = Level.DEBUG;
+		this.level = Log.DEFAULT_LEVEL;
 	}
 	
 	/*
