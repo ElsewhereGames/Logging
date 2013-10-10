@@ -238,4 +238,64 @@ public class LogTestCase {
 		Assert.assertTrue(appender.getLastMessage().equals(message));
 	}
 
+	@Test
+	public void addAndRemoveAppenders() {
+
+		// Create a log by name:
+		String logName = "test_log";
+		Log log = LogManager.getInstance().getLog(logName);
+		log.setLevel(Level.DEBUG);
+
+		MockAppender appender1 = new MockAppender();
+		log.addAppender(appender1);
+
+		MockAppender appender2 = new MockAppender();
+		log.addAppender(appender2);
+
+		// Make sure both appenders can receive the same message:
+		String message = "Log message.";
+
+		log.debug(message);
+
+		Assert.assertEquals(log, appender1.getLastSource());
+		Assert.assertEquals(Level.DEBUG, appender1.getLastLevel());
+		Assert.assertTrue(appender1.getLastMessage().equals(message));
+
+		Assert.assertEquals(log, appender2.getLastSource());
+		Assert.assertEquals(Level.DEBUG, appender2.getLastLevel());
+		Assert.assertTrue(appender2.getLastMessage().equals(message));
+
+		// Remove one appender, the other should still get messages:
+
+		appender1.reset();
+		appender2.reset();
+
+		log.removeAppender(appender1);
+		log.debug(message);
+
+		Assert.assertNotEquals(log, appender1.getLastSource());
+		Assert.assertNotEquals(Level.DEBUG, appender1.getLastLevel());
+		Assert.assertFalse(appender1.getLastMessage().equals(message));
+
+		Assert.assertEquals(log, appender2.getLastSource());
+		Assert.assertEquals(Level.DEBUG, appender2.getLastLevel());
+		Assert.assertTrue(appender2.getLastMessage().equals(message));
+
+		// Remove all appenders:
+
+		appender1.reset();
+		appender2.reset();
+
+		log.clearAppenders();
+		log.debug(message);
+
+		Assert.assertNotEquals(log, appender1.getLastSource());
+		Assert.assertNotEquals(Level.DEBUG, appender1.getLastLevel());
+		Assert.assertFalse(appender1.getLastMessage().equals(message));
+
+		Assert.assertNotEquals(log, appender2.getLastSource());
+		Assert.assertNotEquals(Level.DEBUG, appender2.getLastLevel());
+		Assert.assertFalse(appender2.getLastMessage().equals(message));
+	}
+
 }
