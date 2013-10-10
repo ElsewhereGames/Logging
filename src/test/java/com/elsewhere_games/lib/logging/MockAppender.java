@@ -46,10 +46,22 @@ public class MockAppender implements Appender {
 		return this.lastMessage;
 	}
 
+	/**
+	 * <p>Resets the last received components of this appender back to their
+	 * defaults.</p>
+	 */
+	public void reset() {
+		this.lastSource = null;
+		this.lastLevel = Level.NONE;
+		this.lastMessage = "";
+	}
+
 	//// Writing ////
 
 	@Override
 	public void write(Log source, Level level, String message) {
-		//To change body of implemented methods use File | Settings | File Templates.
+		this.lastSource = source;
+		this.lastLevel = level;
+		this.lastMessage = message;
 	}
 }
