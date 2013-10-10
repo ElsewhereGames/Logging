@@ -22,7 +22,7 @@ public class MockAppender implements Appender {
 
 	// Level
 
-	private Level lastLevel = Level.ERROR;
+	private Level lastLevel = Level.NONE;
 
 	/**
 	 * <p>Gets the last level that was presented to this appender.</p>
