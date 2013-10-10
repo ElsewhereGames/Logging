@@ -5,15 +5,11 @@ import java.util.ArrayList;
 
 public class Log {
 
-	/*
-	 * Constants
-	 */
+	//// Constants ////
 	
 	public static final Level 		DEFAULT_LEVEL 						= Level.DEBUG;
-	
-	/*
-	 * Constructors
-	 */
+
+	//// Life-Cycle ////
 	
 	/**
 	 * <p>Class constructor.</p>
@@ -26,11 +22,9 @@ public class Log {
 		this.appenders = new ArrayList<Appender>();
 		this.level = Log.DEFAULT_LEVEL;
 	}
-	
-	/*
-	 * Log Messages
-	 */
-	
+
+	//// Log Messaging ////
+
 	/**
 	 * <p>Writes the <code>message</code> to this log at the debug level. If this
 	 * log's level is set at the debug level or above, the message will be passed
@@ -82,10 +76,8 @@ public class Log {
 			}
 		}
 	}
-	
-	/*
-	 * Appenders
-	 */
+
+	//// Appending ////
 	
 	private ArrayList<Appender> appenders;
 	
@@ -118,9 +110,7 @@ public class Log {
 		this.appenders.clear();
 	}
 	
-	/*
-	 * Accessors and Modifiers
-	 */
+	//// Components ////
 	
 	private String name;
 	
