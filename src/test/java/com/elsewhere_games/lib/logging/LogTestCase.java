@@ -1,6 +1,7 @@
 package com.elsewhere_games.lib.logging;
 
 // JUnit
+import com.elsewhere_games.lib.logging.mock.MockAppender;
 import org.junit.Assert;
 import org.junit.Test;
 

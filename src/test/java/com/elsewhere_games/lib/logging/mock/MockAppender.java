@@ -1,4 +1,8 @@
-package com.elsewhere_games.lib.logging;
+package com.elsewhere_games.lib.logging.mock;
+
+import com.elsewhere_games.lib.logging.Appender;
+import com.elsewhere_games.lib.logging.Level;
+import com.elsewhere_games.lib.logging.Log;
 
 /**
  *
