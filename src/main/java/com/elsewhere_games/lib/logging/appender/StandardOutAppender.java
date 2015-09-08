@@ -3,6 +3,9 @@ package com.elsewhere_games.lib.logging.appender;
 import com.elsewhere_games.lib.logging.Appender;
 import com.elsewhere_games.lib.logging.Level;
 import com.elsewhere_games.lib.logging.Log;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 /**
  * <p>This appender writes log messages to the standard System output streams. 
@@ -17,10 +20,16 @@ public class StandardOutAppender implements Appender {
 	@Override
 	public void write(Log source, Level level, String message) {
 		if (level.equals(Level.ERROR)) {
-			System.err.println(message);
+			System.err.println(getCurrentDateTime() + ": " + level + ": " + message);
 		} else {
-			System.out.println(message);
+			System.out.println(getCurrentDateTime() + ": " + level + ": " + message);
 		}
 	}
-
+	
+	private String getCurrentDateTime() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		//get current date time with Date()
+		Date date = new Date();
+		return dateFormat.format(date);
+	}
 }
